@@ -38,11 +38,51 @@
                </div>
                <div class="col-xs-12 mt20 mb20">
                   <h:commandButton value="Invia" styleClass="btn btn-info">
-                     <f:ajax execute="name surname age fiscalCode" render="output" />
+                     <f:ajax execute="name surname age fiscalCode" render="statusMessage table name surname age fiscalCode" listener="#{personData.saveDatas}" />
                   </h:commandButton>
                </div>
                <div class="col-xs-12 mt20 mb20">
-                  <h:outputLabel id="output" value="#{personData.inputData != null ? personData.inputData : ''}" />
+                  <h:outputLabel id="statusMessage" value="#{personData.statusMessage != null ? personData.statusMessage : ''}" />
+               </div>
+               <div class="col-xs-12 mt20 mb20">
+                  <h:dataTable value="#{personData.persons}" var="uiPerson" id="table" styleClass="table table-hover">
+                     <h:column>
+                        <!-- column header -->
+                        <f:facet name="header">Id</f:facet>
+                        <!-- row record -->
+                        #{uiPerson.id}
+                     </h:column>
+                     <h:column>
+                        <!-- column header -->
+                        <f:facet name="header">Nome</f:facet>
+                        <!-- row record -->
+                        #{uiPerson.name}
+                     </h:column>
+                     <h:column>
+                        <!-- column header -->
+                        <f:facet name="header">Cognome</f:facet>
+                        <!-- row record -->
+                        #{uiPerson.surname}
+                     </h:column>
+                     <h:column>
+                        <!-- column header -->
+                        <f:facet name="header">Età</f:facet>
+                        <!-- row record -->
+                        #{uiPerson.age}
+                     </h:column>
+                     <h:column>
+                        <!-- column header -->
+                        <f:facet name="header">Codice fiscale</f:facet>
+                        <!-- row record -->
+                        #{uiPerson.fiscalCode}
+                     </h:column>
+                     <h:column>
+                        <!-- column header -->
+                        <f:facet name="header">Elimina</f:facet>
+                        <!-- row record -->
+                        <h:commandButton value="Elimina" styleClass="btn btn-danger" action="#{personData.deleteData(uiPerson.id)}" />
+                     </h:column>
+                  </h:dataTable>
                </div>
             </div>
          </h:form>

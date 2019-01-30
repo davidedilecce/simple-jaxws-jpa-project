@@ -1,3 +1,4 @@
+
 package applica;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -6,12 +7,12 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java per uiPerson complex type.
+ * <p>Classe Java per person complex type.
  * 
  * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
  * 
  * <pre>
- * &lt;complexType name="uiPerson">
+ * &lt;complexType name="person">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
@@ -29,39 +30,20 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "uiPerson", propOrder = {
+@XmlType(name = "person", propOrder = {
     "age",
     "fiscalCode",
     "id",
     "name",
     "surname"
 })
-public class UiPerson {
+public class Person {
 
     protected Integer age;
     protected String fiscalCode;
     protected Integer id;
     protected String name;
     protected String surname;
-
-    public UiPerson(Person p) {
-        this.setAge(p.getAge());
-        this.setId(p.getId());
-        this.setSurname(p.getSurname());
-        this.setName(p.getName());
-        this.setFiscalCode(p.getFiscalCode());
-    }
-
-    public UiPerson(Integer age, String fiscalCode, Integer id, String name, String surname) {
-        this.age = age;
-        this.fiscalCode = fiscalCode;
-        this.id = id;
-        this.name = name;
-        this.surname = surname;
-    }
-
-    public UiPerson() {
-    }
 
     /**
      * Recupera il valore della proprietà age.

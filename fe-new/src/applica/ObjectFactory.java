@@ -24,8 +24,10 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _FindPersons_QNAME = new QName("http://applica/", "findPersons");
     private final static QName _DeletePerson_QNAME = new QName("http://applica/", "deletePerson");
     private final static QName _DeletePersonResponse_QNAME = new QName("http://applica/", "deletePersonResponse");
+    private final static QName _FindPersonsResponse_QNAME = new QName("http://applica/", "findPersonsResponse");
     private final static QName _SavePerson_QNAME = new QName("http://applica/", "savePerson");
     private final static QName _SavePersonResponse_QNAME = new QName("http://applica/", "savePersonResponse");
 
@@ -45,11 +47,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link FindPersons }
+     * 
+     */
+    public FindPersons createFindPersons() {
+        return new FindPersons();
+    }
+
+    /**
      * Create an instance of {@link DeletePersonResponse }
      * 
      */
     public DeletePersonResponse createDeletePersonResponse() {
         return new DeletePersonResponse();
+    }
+
+    /**
+     * Create an instance of {@link FindPersonsResponse }
+     * 
+     */
+    public FindPersonsResponse createFindPersonsResponse() {
+        return new FindPersonsResponse();
     }
 
     /**
@@ -69,11 +87,28 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Person }
+     * 
+     */
+    public Person createPerson() {
+        return new Person();
+    }
+
+    /**
      * Create an instance of {@link UiPerson }
      * 
      */
     public UiPerson createUiPerson() {
         return new UiPerson();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindPersons }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://applica/", name = "findPersons")
+    public JAXBElement<FindPersons> createFindPersons(FindPersons value) {
+        return new JAXBElement<FindPersons>(_FindPersons_QNAME, FindPersons.class, null, value);
     }
 
     /**
@@ -92,6 +127,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://applica/", name = "deletePersonResponse")
     public JAXBElement<DeletePersonResponse> createDeletePersonResponse(DeletePersonResponse value) {
         return new JAXBElement<DeletePersonResponse>(_DeletePersonResponse_QNAME, DeletePersonResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindPersonsResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://applica/", name = "findPersonsResponse")
+    public JAXBElement<FindPersonsResponse> createFindPersonsResponse(FindPersonsResponse value) {
+        return new JAXBElement<FindPersonsResponse>(_FindPersonsResponse_QNAME, FindPersonsResponse.class, null, value);
     }
 
     /**

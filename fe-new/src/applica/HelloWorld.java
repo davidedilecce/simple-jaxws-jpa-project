@@ -3,6 +3,7 @@ package applica;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
+import javax.jws.WebResult;
 import javax.jws.WebService;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.ws.Action;
@@ -28,12 +29,15 @@ public interface HelloWorld {
      * 
      * @param data
      * @param data2
+     * @return
+     *     returns java.lang.Integer
      */
     @WebMethod
+    @WebResult(targetNamespace = "")
     @RequestWrapper(localName = "savePerson", targetNamespace = "http://applica/", className = "applica.SavePerson")
     @ResponseWrapper(localName = "savePersonResponse", targetNamespace = "http://applica/", className = "applica.SavePersonResponse")
     @Action(input = "http://applica/HelloWorld/savePersonRequest", output = "http://applica/HelloWorld/savePersonResponse")
-    public void savePerson(
+    public Integer savePerson(
         @WebParam(name = "data", targetNamespace = "")
         UiPerson data,
         @WebParam(name = "data2", targetNamespace = "")
@@ -50,5 +54,17 @@ public interface HelloWorld {
     public void deletePerson(
         @WebParam(name = "id", targetNamespace = "")
         Integer id);
+
+    /**
+     * 
+     * @return
+     *     returns java.util.List<applica.Person>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "findPersons", targetNamespace = "http://applica/", className = "applica.FindPersons")
+    @ResponseWrapper(localName = "findPersonsResponse", targetNamespace = "http://applica/", className = "applica.FindPersonsResponse")
+    @Action(input = "http://applica/HelloWorld/findPersonsRequest", output = "http://applica/HelloWorld/findPersonsResponse")
+    public List<Person> findPersons();
 
 }
