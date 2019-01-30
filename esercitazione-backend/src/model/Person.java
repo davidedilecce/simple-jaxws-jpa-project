@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by davidevincenzodilecce on 22/01/2019.
  */
 @Entity
-public class Person {
+public class Person implements IEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,6 +35,10 @@ public class Person {
     }
 
     public Integer getId() {
+        return id;
+    }
+
+    public Integer getIdFromEntity() {
         return id;
     }
 

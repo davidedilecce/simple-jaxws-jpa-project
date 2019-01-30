@@ -1,6 +1,11 @@
 package persistence;
 
-import javax.persistence.*;
+import model.IEntity;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,17 +37,17 @@ public class CrudUtils {
         return new CrudUtils();
     }
 
-    public void save(Object obj) {
+    public Integer save(Object obj) {
 
-        try {
+        entityManager.getTransaction().begin();
+        entityManager.persist(obj);
+        entityManager.getTransaction().commit();
+        entityManager.detach(obj);
 
-            entityManager.getTransaction().begin();
-            entityManager.persist(obj);
-            entityManager.getTransaction().commit();
-            entityManager.detach(obj);
-
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (obj instanceof IEntity) {
+            return ((IEntity) obj).getIdFromEntity();
+        } else {
+            return null;
         }
 
     }

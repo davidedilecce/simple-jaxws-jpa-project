@@ -18,8 +18,8 @@ public class PersonDaoImpl implements PersonDAO {
     }
 
     @Override
-    public void save(Person person) {
-        CrudUtils.instance().save(person);
+    public Integer save(Person person) {
+        return CrudUtils.instance().save(person);
     }
 
     @Override
@@ -28,7 +28,7 @@ public class PersonDaoImpl implements PersonDAO {
     }
 
     @Override
-    public List<Person> findByName(String name) {
+    public List<Person> findByName() {
         return CrudUtils.instance().find("SELECT p FROM Person p", Person.class);
     }
 

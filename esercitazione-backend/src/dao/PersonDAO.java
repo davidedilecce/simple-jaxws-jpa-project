@@ -10,9 +10,9 @@ import java.util.List;
 public interface PersonDAO {
 
     void update(Person person);
-    void save(Person person);
+    Integer save(Person person);
     Person getById(Integer id);
-    List<Person> findByName(String name);
+    List<Person> findByName();
     void delete(Integer id);
 
 }
